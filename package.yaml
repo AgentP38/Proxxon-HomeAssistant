@@ -1,0 +1,427 @@
+modbus:
+  - name: proxon
+    type: serial
+    delay: 5
+    baudrate: 19200
+    bytesize: 8
+    method: rtu
+    parity: E
+    port: /dev/serial/by-id/usb-1a86_USB2.0-Ser_-if00-port0
+    stopbits: 1
+    switches:
+      - name: "Heizelemente Global"
+        unique_id: proxon_heizelemente_global
+        scan_interval: 15
+        slave: 41
+        address: 325
+        verify:
+          delay: 1
+      - name: "Heizelement Wohnzimmer (Zone1)"
+        unique_id: proxon_heizelement_wohnzimmer_zone1
+        scan_interval: 15
+        slave: 41
+        address: 187
+        verify:
+          delay: 1
+      - name: "Heizelement Yannic (Zone2)"
+        unique_id: proxon_heizelement_yannic
+        scan_interval: 15
+        slave: 41
+        address: 253
+        verify:
+          delay: 1
+      - name: "Heizelement Flur"
+        unique_id: proxon_heizelement_flur
+        scan_interval: 15
+        slave: 41
+        address: 254
+        verify:
+          delay: 1
+      - name: "Heizelement Arbeitszimmer"
+        unique_id: proxon_heizelement_arbeitszimmer
+        scan_interval: 15
+        slave: 41
+        address: 255
+        verify:
+          delay: 1
+      - name: "Heizelement Schlafen"
+        unique_id: proxon_heizelement_schlafen
+        scan_interval: 15
+        slave: 41
+        address: 256
+        verify:
+          delay: 1
+      - name: "Heizelement KiZi"
+        unique_id: proxon_heizelement_kizi
+        scan_interval: 15
+        slave: 41
+        address: 258
+        verify:
+          delay: 1
+      - name: "Heizelement Wasser"
+        unique_id: proxon_heizelement_wasser
+        scan_interval: 15
+        slave: 41
+        address: 2001
+        verify:
+          delay: 1
+          
+      - name: "Kühlung Global"
+        unique_id: proxon_kuehlung_global
+        scan_interval: 15
+        slave: 41
+        address: 62
+        verify:
+          delay: 1
+    sensors:
+      - name: "Temperatur Wohnzimmer (Zone1)"
+        unique_id: proxon_temperatur_wohnzimmer_zone1
+        scan_interval: 30
+        slave: 41
+        address: 41
+        input_type: input
+        scale: 0.01
+        precision: 1
+        unit_of_measurement: °C
+        data_type: uint16
+      - name: "Temperatur Yannic (Zone2)"
+        unique_id: proxon_temperatur_yannic_zone2
+        scan_interval: 30
+        slave: 41
+        address: 40
+        input_type: input
+        scale: 0.01
+        precision: 1
+        unit_of_measurement: °C
+        data_type: uint16
+      - name: "Temperatur Flur"
+        unique_id: proxon_temperatur_flur
+        scan_interval: 30
+        slave: 41
+        address: 593
+        input_type: input
+        scale: 0.1
+        precision: 1
+        unit_of_measurement: °C
+        data_type: int16
+      - name: "Temperatur Arbeitszimmer"
+        unique_id: proxon_temperatur_arbeitszimmer
+        scan_interval: 30
+        slave: 41
+        address: 596
+        input_type: input
+        scale: 0.1
+        precision: 1
+        unit_of_measurement: °C
+        data_type: int16
+      - name: "Temperatur Schlafen"
+        unique_id: proxon_temperatur_schlafen
+        scan_interval: 30
+        slave: 41
+        address: 599
+        input_type: input
+        scale: 0.1
+        precision: 1
+        unit_of_measurement: °C
+        data_type: int16
+      - name: "Temperatur KiZi"
+        unique_id: proxon_temperatur_kizi
+        scan_interval: 30
+        slave: 41
+        address: 605
+        input_type: input
+        scale: 0.1
+        precision: 1
+        unit_of_measurement: °C
+        data_type: int16
+      - name: "Temperatur Wasser"
+        unique_id: proxon_temperatur_wasser
+        scan_interval: 30
+        slave: 41
+        address: 814
+        input_type: input
+        scale: 0.1
+        offset: -100
+        precision: 1
+        unit_of_measurement: °C
+        data_type: uint16
+      - name: "CO2 Wohnzimmer"
+        unique_id: proxon_co2_wohnzimmer
+        scan_interval: 30
+        slave: 41
+        address: 21
+        input_type: input
+        device_class: aqi
+        unit_of_measurement: ppm
+        data_type: int16 #das muss noch verifiziert werden
+      - name: "Luftfeuchte Wohnzimmer"
+        unique_id: proxon_luftfeuchte_wohnzimmer
+        scan_interval: 30
+        slave: 41
+        address: 22
+        input_type: input
+        device_class: humidity
+        unit_of_measurement: "%"
+        data_type: int16 #das muss noch verifiziert werden
+      - name: "Lüftungsstufe Ventilator Zuluft"
+        unique_id: proxon_lueftungsstufe_ventilator_zuluft
+        scan_interval: 30
+        slave: 41
+        address: 154
+        input_type: input
+        data_type: int16
+      - name: "Betriebsart"
+        unique_id: proxon_betriebsart
+        scan_interval: 30
+        slave: 41
+        address: 16
+        input_type: holding
+        data_type: uint16
+      - name: "Soll-Temperatur Wohnzimmer (Zone1)"
+        unique_id: proxon_soll_temperatur_wohnzimmer_zone1
+        scan_interval: 30
+        slave: 41
+        address: 70
+        input_type: holding
+        scale: 0.01
+        precision: 1
+        unit_of_measurement: °C
+        data_type: int16
+      - name: "Soll-Temperatur Yannic (Zone2)"
+        unique_id: proxon_soll_temperatur_yannic_zone2
+        scan_interval: 30
+        slave: 41
+        address: 75
+        input_type: holding
+        scale: 0.01
+        precision: 1
+        unit_of_measurement: °C
+        data_type: int16
+      - name: "Soll-Temperatur Wasser"
+        unique_id: proxon_soll_temperatur_wasser
+        scan_interval: 30
+        slave: 41
+        address: 2000
+        input_type: holding
+        scale: 0.1
+        precision: 1
+        unit_of_measurement: °C
+  #      data_type: uint16 #das muss noch verifiziert werden
+      - name: "Temperatur-Schwelle Heizstab Wasser"
+        unique_id: proxon_temperatur_schwelle_heizstab_wasser
+        scan_interval: 30
+        slave: 41
+        address: 2003
+        input_type: holding
+        scale: 0.1
+        precision: 1
+        unit_of_measurement: °C
+ #       data_type: uint16 #das muss noch verifiziert werden
+      - name: "Restzeit Intensivlüftung"
+        unique_id: proxon_restzeit_intensivlueftung
+        scan_interval: 30
+        slave: 41
+        address: 133
+        input_type: holding
+        unit_of_measurement: min
+        data_type: uint16
+      - name: "Zeit FWT Online"
+        unique_id: proxon_zeit_fwt_online
+        scan_interval: 30
+        slave: 41
+        address: 467
+        input_type: holding
+        unit_of_measurement: std
+        data_type: uint16
+      - name: "Standzeit FWT Gerätefilter"
+        unique_id: proxon_standzeit_fwt_geraetefilter
+        scan_interval: 30
+        slave: 41
+        address: 460
+        input_type: holding
+        unit_of_measurement: std
+        data_type: uint16
+      - name: "Nutzzeit FWT Gerätefilter"
+        unique_id: proxon_nutzzeit_fwt_geraetefilter
+        scan_interval: 30
+        slave: 41
+        address: 469
+        input_type: holding
+        unit_of_measurement: std
+        data_type: uint16
+      - name: "Mitteltemperatur NBP Flur"
+        unique_id: proxon_mitteltemperatur_nbp_flur
+        scan_interval: 30
+        slave: 41
+        address: 234
+        input_type: holding
+        unit_of_measurement: °C
+        data_type: int16
+      - name: "Mitteltemperatur NBP Yannic"
+        unique_id: proxon_mitteltemperatur_nbp_yaannic
+        scan_interval: 30
+        slave: 41
+        address: 233
+        input_type: holding
+        unit_of_measurement: °C
+        data_type: int16
+      - name: "Mitteltemperatur NBP Arbeitszimmer"
+        unique_id: proxon_mitteltemperatur_nbp_arbeitszimmer
+        scan_interval: 30
+        slave: 41
+        address: 235
+        input_type: holding
+        unit_of_measurement: °C
+        data_type: int16
+      - name: "Mitteltemperatur NBP Schlafen"
+        unique_id: proxon_mitteltemperatur_nbp_schlafen
+        scan_interval: 30
+        slave: 41
+        address: 236
+        input_type: holding
+        unit_of_measurement: °C
+        data_type: int16
+      - name: "Mitteltemperatur NBP KiZi"
+        unique_id: proxon_mitteltemperatur_nbp_kizi
+        scan_interval: 30
+        slave: 41
+        address: 238
+        input_type: holding
+        unit_of_measurement: °C
+        data_type: int16
+      - name: "Offsettemperatur NBP Flur"
+        unique_id: proxon_offsettemperatur_nbp_flur
+        scan_interval: 30
+        slave: 41
+        address: 214
+        input_type: holding
+        unit_of_measurement: °C
+        data_type: int16
+      - name: "Offsettemperatur NBP Arbeitszimmer"
+        unique_id: proxon_offsettemperatur_nbp_arbeitszimmer
+        scan_interval: 30
+        slave: 41
+        address: 215
+        input_type: holding
+        unit_of_measurement: °C
+        data_type: int16
+      - name: "Offsettemperatur NBP Schlafen"
+        unique_id: proxon_offsettemperatur_nbp_schlafen
+        scan_interval: 30
+        slave: 41
+        address: 216
+        input_type: holding
+        unit_of_measurement: °C
+        data_type: int16
+      - name: "Offsettemperatur NBP KiZi"
+        unique_id: proxon_offsettemperatur_nbp_kizi
+        scan_interval: 30
+        slave: 41
+        address: 218
+        input_type: holding
+        unit_of_measurement: °C
+        data_type: int16
+
+      - name: "Offsettemperatur NBP Yannic"
+        unique_id: proxon_offsettemperatur_nbp_Yannic
+        scan_interval: 30
+        slave: 41
+        address: 213
+        input_type: holding
+        unit_of_measurement: °C
+        data_type: int16
+
+input_number:
+  helper_offset_temperatur_arbeitszimmer:
+    name: "Helper offset Temp Arbeitszimmer"
+    unit_of_measurement: °C
+    min: -3
+    max: 3
+    step: 1
+    icon: mdi:temperature-celsius
+
+  helper_offset_temperatur_flur:
+    name: "Helper offset Temp Flur"
+    unit_of_measurement: °C
+    min: -3
+    max: 3
+    step: 1
+    icon: mdi:temperature-celsius
+
+  helper_offset_temperatur_yannic:
+    name: "Helper offset Temp Yannic"
+    unit_of_measurement: °C
+    min: -3
+    max: 3
+    step: 1
+    icon: mdi:temperature-celsius
+
+  helper_offset_temperatur_schlafen:
+    name: "Helper offset Temp Schlafen"
+    unit_of_measurement: °C
+    min: -3
+    max: 3
+    step: 1
+    icon: mdi:temperature-celsius
+
+  helper_offset_temperatur_kizi:
+    name: "Helper offset Temp Kinderzimmer"
+    unit_of_measurement: °C
+    min: -3
+    max: 3
+    step: 1
+    icon: mdi:temperature-celsius
+
+  helper_wasser_temperatur:
+    name: "Helper Wassertemperatur"
+    unit_of_measurement: °C
+    min: 20
+    max: 55
+    step: 1
+    icon: mdi:thermometer-low
+
+  helper_wasser_temperatur_booster:
+    name: "Helper Wassertemperatur Booster"
+    unit_of_measurement: °C
+    min: 20
+    max: 70
+    step: 1
+    icon: mdi:thermometer-high
+
+
+template:
+  - sensor:
+    - name: "Soll Temepratur Arbeitszimmer"
+      unique_id: template.arbeitszimmer_soll_temperatur
+      unit_of_measurement: °C
+      state: "{{ states.sensor.mitteltemperatur_nbp_arbeitszimmer.state | int + states.input_number.helper_offset_temperatur_arbeitszimmer | int }}"
+    - name: "Manuell Temperatur Change Arbeitszimmer"
+      unique_id: template.arbeitszimmer_manuell_temperatur
+      unit_of_measurement: °C
+      state: "{{ states.sensor.soll_temperatur_arbeitszimmer.state | int - states.sensor.mitteltemperatur_nbp_arbeitszimmer.state | int }}"
+
+
+climate:
+  - platform: generic_thermostat
+    name: Arbeitszimmer Heizung
+    heater: switch.heizelement_arbeitszimmer
+    target_sensor: sensor.soll_temepratur_arbeitszimmer
+    min_temp: 17
+    max_temp: 23
+    ac_mode: false
+    target_temp: 17
+    cold_tolerance: 0.3
+    hot_tolerance: 0
+    min_cycle_duration:
+      seconds: 15
+    keep_alive:
+      minutes: 3
+    initial_hvac_mode: "off"
+    precision: 1.0
+
+
+
+  
+
+  
+
