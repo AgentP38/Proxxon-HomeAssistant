@@ -1,0 +1,88 @@
+views:
+
+  - theme: Backend-selected
+    title: Heizung
+    path: heizung
+    icon: mdi:waves-arrow-up
+    badges: []
+    cards:
+      - type: entities
+        entities:
+          - entity: sensor.betriebsart
+          - entity: switch.heizelemente_global
+          - entity: switch.kuhlung_global
+          - entity: sensor.temperatur_wasser
+          - entity: sensor.soll_temperatur_wasser
+          - entity: input_number.helper_wasser_temperatur
+          - entity: switch.heizelement_wasser
+          - entity: input_number.helper_wasser_temperatur_booster
+          - entity: sensor.temperatur_schwelle_heizstab_wasser
+          - entity: sensor.restzeit_intensivluftung
+          - entity: sensor.zeit_fwt_online
+          - entity: sensor.nutzzeit_fwt_geratefilter
+          - entity: sensor.standzeit_fwt_geratefilter
+          - entity: sensor.luftungsstufe_ventilator_zuluft
+        title: Heizung
+      - type: entities
+        entities:
+          - entity: sun.sun
+          - entity: sensor.netatmo_meso_wetter_aussen_temperature
+          - entity: sensor.e3dc_grid_power
+          - entity: sensor.e3dc_battery_soc
+          - entity: sensor.openweathermap_condition
+      - type: entities
+        entities:
+          - entity: switch.heizelement_wohnzimmer_zone1
+          - entity: sensor.temperatur_wohnzimmer_zone1
+          - entity: sensor.co2_wohnzimmer
+          - entity: sensor.luftfeuchte_wohnzimmer
+          - entity: sensor.soll_temperatur_wohnzimmer_zone1
+          - entity: binary_sensor.fensterkontakt_kueche
+          - entity: binary_sensor.fensterkontakt_haustur
+          - entity: binary_sensor.fensterkontakt_wohnzimmer_state
+        title: Heizung Wohnzimmer
+      - type: entities
+        entities:
+          - entity: switch.heizelement_flur
+          - entity: sensor.temperatur_flur
+          - entity: sensor.mitteltemperatur_nbp_flur
+          - entity: sensor.offsettemperatur_nbp_flur
+          - entity: input_number.helper_offset_temperatur_flur
+          - entity: binary_sensor.fensterkontakt_haustur
+          - entity: binary_sensor.fensterkontakt_wohnzimmer_state
+          - entity: binary_sensor.fensterkontakt_kueche
+        title: 'Heizung Flur '
+      - type: entities
+        entities:
+          - entity: switch.heizelement_yannic_zone2
+          - entity: sensor.temperatur_yannic_zone2
+          - entity: sensor.soll_temperatur_yannic_zone2
+          - entity: sensor.offsettemperatur_nbp_yannic
+          - entity: input_number.helper_offset_temperatur_yannic
+        title: Heizung Yannic
+      - type: entities
+        entities:
+          - entity: switch.heizelement_arbeitszimmer
+          - entity: sensor.temperatur_arbeitszimmer
+          - entity: sensor.mitteltemperatur_nbp_arbeitszimmer
+          - entity: sensor.offsettemperatur_nbp_arbeitszimmer
+          - entity: input_number.helper_offset_temperatur_arbeitszimmer
+        title: Heizung Arbeitszimmer
+      - type: entities
+        entities:
+          - entity: switch.heizelement_kizi
+          - entity: sensor.temperatur_kizi
+          - entity: sensor.mitteltemperatur_nbp_kizi
+          - entity: sensor.offsettemperatur_nbp_kizi
+          - entity: input_number.helper_offset_temperatur_kizi
+          - entity: binary_sensor.fensterkontakt_kizi
+        title: Heizung KiZi
+      - type: entities
+        entities:
+          - entity: switch.heizelement_schlafen
+          - entity: sensor.temperatur_schlafen
+          - entity: sensor.mitteltemperatur_nbp_schlafen
+          - entity: sensor.offsettemperatur_nbp_schlafen
+          - entity: input_number.helper_offset_temperatur_schlafen
+        title: Heizung Schlafzimmer
+title: Proxon
