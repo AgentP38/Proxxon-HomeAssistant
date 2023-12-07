@@ -1,0 +1,120 @@
+## you need to install hass-template-climate  / https://github.com/jcwillox/hass-template-climate
+## thanks to jcwillox
+
+
+- platform: climate_template
+  name: Heizung Arbeitszimmer
+  unique_id: heizung_arbeitszimmer
+  modes:
+    - "auto"  
+    - "heat"
+  max_temp: 23
+  min_temp: 17
+  current_temperature_template: >
+    {{ states('sensor.temperatur_arbeitszimmer') }}
+#  current_humidity_template:
+  set_temperature: 
+    - service: input_number.set_value
+      data:
+        value: >
+          {{ (state_attr('climate.heizung_arbeitszimmer', 'temperature') | int) - (states('sensor.mitteltemperatur_nbp_arbeitszimmer') | int)}} 
+      target: 
+        entity_id: input_number.helper_clima_arbeitszimmer
+
+
+- platform: climate_template
+  name: Heizung Flur
+  unique_id: heizung_flur
+  modes:
+    - "auto"  
+    - "heat"
+  max_temp: 23
+  min_temp: 17
+  current_temperature_template: >
+    {{ states('sensor.temperatur_flur') }}
+#  current_humidity_template:
+  set_temperature: 
+    - service: input_number.set_value
+      data:
+        value: >
+          {{ (state_attr('climate.heizung_flur', 'temperature') | int) - (states('sensor.mitteltemperatur_nbp_flur') | int)}} 
+      target: 
+        entity_id: input_number.helper_clima_flur
+        
+- platform: climate_template
+  name: Heizung Kinderzimmer
+  unique_id: heizung_kinderzimmer
+  modes:
+    - "auto"  
+    - "heat"
+  max_temp: 23
+  min_temp: 17
+  current_temperature_template: >
+    {{ states('sensor.temperatur_kizi') }}
+#  current_humidity_template:
+  set_temperature: 
+    - service: input_number.set_value
+      data:
+        value: >
+          {{ (state_attr('climate.heizung_kinderzimmer', 'temperature') | int) - (states('sensor.mitteltemperatur_nbp_kizi') | int)}} 
+      target: 
+        entity_id: input_number.helper_clima_kinderzimmer
+
+- platform: climate_template
+  name: Heizung Playroom
+  unique_id: heizung_playroom
+  modes:
+    - "auto"  
+    - "heat"
+  max_temp: 23
+  min_temp: 17
+  current_temperature_template: >
+    {{ states('sensor.temperatur_yannic_zone2') }}
+#  current_humidity_template:
+  set_temperature: 
+    - service: input_number.set_value
+      data:
+        value: >
+          {{ (state_attr('climate.heizung_playroom', 'temperature') | int) - (states('sensor.mitteltemperatur_nbp_yannic') | int)}} 
+      target: 
+        entity_id: input_number.helper_clima_playroom   
+        
+- platform: climate_template
+  name: Heizung Schlafzimmer
+  unique_id: heizung_schlafzimmer
+  modes:
+    - "auto"  
+    - "heat"
+  max_temp: 23
+  min_temp: 17
+  current_temperature_template: >
+    {{ states('sensor.temperatur_schlafen') }}
+#  current_humidity_template:
+  set_temperature: 
+    - service: input_number.set_value
+      data:
+        value: >
+          {{ (state_attr('climate.heizung_schlafzimmer', 'temperature') | int) - (states('sensor.mitteltemperatur_nbp_schlafen') | int)}} 
+      target: 
+        entity_id: input_number.helper_clima_schlafzimmer 
+- platform: climate_template
+  name: Heizung Wohnzimmer
+  unique_id: heizung_wohnzimmer
+  modes:
+    - "auto"
+    - "heat"
+    - "cool"
+  max_temp: 23
+  min_temp: 17
+  current_temperature_template: >
+    {{ states('sensor.temperatur_wohnzimmer_zone1') }}
+  current_humidity_template: >
+    {{ states('sensor.luftfeuchte_wohnzimmer') }}
+  set_temperature: 
+    - service: input_number.set_value
+      data:
+        value: >
+          {{ (state_attr('climate.heizung_wohnzimmer', 'temperature') )}} 
+      target: 
+        entity_id: input_number.helper_clima_wohnzimmer  
+    
