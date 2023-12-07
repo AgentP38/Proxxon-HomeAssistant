@@ -1,12 +1,12 @@
 # Proxxon-HomeAssistant
-Adaption Proxxon Home Assistant
+## Adaption Proxxon Home Assistant
 
 
-Hi here is my configuration for the Proxon Integration 
+Hi, here is my configuration for the Proxon Integration 
 
-used components.
+used components:
 
-Modbus
-thermostate-template
+- Modbus
+- thermostate-template
 
 The automation is mostly done in NodeRed
