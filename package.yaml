@@ -237,7 +237,7 @@ modbus:
         unique_id: proxon_standzeit_fwt_geraetefilter
         scan_interval: 30
         slave: 41
-        address: 460
+        address: 468
         input_type: holding
         unit_of_measurement: std
         data_type: uint16
@@ -387,41 +387,77 @@ input_number:
     max: 70
     step: 1
     icon: mdi:thermometer-high
+ 
+  helper_clima_arbeitszimmer:
+    name: "Helper Clima-Änderung AZ"
+    unit_of_measurement: °C
+    min: -3
+    max: 3
+    step: 1
+    icon: mdi:thermometer-high
 
-
+  helper_clima_flur:
+    name: "Helper Clima-Änderung Flur"
+    unit_of_measurement: °C
+    min: -3
+    max: 3
+    step: 1
+    icon: mdi:thermometer-high
+  helper_clima_schlafzimmer:
+    name: "Helper Clima-Änderung Schlafzimmer"
+    unit_of_measurement: °C
+    min: -3
+    max: 3
+    step: 1
+    icon: mdi:thermometer-high
+  helper_clima_playroom:
+    name: "Helper Clima-Änderung Playroom"
+    unit_of_measurement: °C
+    min: -3
+    max: 3
+    step: 1
+    icon: mdi:thermometer-high
+  helper_clima_kinderzimmer:
+    name: "Helper Clima-Änderung Kinderzimmer"
+    unit_of_measurement: °C
+    min: -3
+    max: 3
+    step: 1
+    icon: mdi:thermometer-high
+  helper_clima_wohnzimmer:
+    name: "Helper Clima-Änderung Wohnzimmer"
+    unit_of_measurement: °C
+    min: 17
+    max: 23
+    step: 1
+    icon: mdi:thermometer-high
+    
 template:
   - sensor:
-    - name: "Soll Temepratur Arbeitszimmer"
-      unique_id: template.arbeitszimmer_soll_temperatur
-      unit_of_measurement: °C
-      state: "{{ states.sensor.mitteltemperatur_nbp_arbeitszimmer.state | int + states.input_number.helper_offset_temperatur_arbeitszimmer | int }}"
-    - name: "Manuell Temperatur Change Arbeitszimmer"
-      unique_id: template.arbeitszimmer_manuell_temperatur
-      unit_of_measurement: °C
-      state: "{{ states.sensor.soll_temperatur_arbeitszimmer.state | int - states.sensor.mitteltemperatur_nbp_arbeitszimmer.state | int }}"
-
-
-climate:
-  - platform: generic_thermostat
-    name: Arbeitszimmer Heizung
-    heater: switch.heizelement_arbeitszimmer
-    target_sensor: sensor.soll_temepratur_arbeitszimmer
-    min_temp: 17
-    max_temp: 23
-    ac_mode: false
-    target_temp: 17
-    cold_tolerance: 0.3
-    hot_tolerance: 0
-    min_cycle_duration:
-      seconds: 15
-    keep_alive:
-      minutes: 3
-    initial_hvac_mode: "off"
-    precision: 1.0
-
+    - name: 'Heizung Filter Tage'
+      state: >
+        {% set filter_raw = states('sensor.nutzzeit_fwt_geratefilter') | float %}
+        {{ (((filter_raw) *2) /24) | round(0) }}
+      unit_of_measurement: "days"
+    - name: "Heizung Filter Resttage"
+      state: >
+        {% set filter_tage = states('sensor.heizung_filter_tage') | float %}
+        {{ (180 - filter_tage) | round(0) }}
+      unit_of_measurement: "days"
 
 
   
 
-  
-
+      
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
