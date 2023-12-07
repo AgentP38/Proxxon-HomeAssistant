@@ -1,0 +1,5 @@
+## In configuration.yaml add these lines ...
+homeassistant:
+  packages: !include_dir_named packages
+
+climate: !include climates.yaml
